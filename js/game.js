@@ -90,8 +90,11 @@ class Game {
         for (var i = 0; i < fruitGroup.length; i++) {
             if (fruitGroup.get(i).isTouching(players)) {
                 fruitGroup.get(i).destroy();
-                player.score =player.score+1;
+                player.score = player.score+1;
                 player.update();
+                if(player.score === 10){
+                    gameState = 2;
+                }
             }
         }
         //add the condition to calculate the score. and use update ti update the values in the database.
@@ -100,5 +103,8 @@ class Game {
 
     end() {
        console.log("Game Ended");
+           textSize(70);
+           fill("white");
+           text(player.name +" WON", 370, 300);
     }
 }
